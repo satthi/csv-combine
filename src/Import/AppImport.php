@@ -1,6 +1,11 @@
 <?php
 namespace CsvCombine\Import;
 
+/**
+ * AppImport
+ * Import系のまとめ
+ * @author hagiwara
+ */
 class AppImport {
     protected $_defaultOptions = [
         'line_feed_code' => "\r\n",
@@ -12,6 +17,11 @@ class AppImport {
         'extra_fixed_options' => []
     ];
 
+    /**
+     * getOptions
+     * 使用オプションのまとめ
+     * @author hagiwara
+     */
     protected function getOptions($options)
     {
         $options = array_merge($this->_defaultOptions, $options);

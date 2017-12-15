@@ -2,7 +2,6 @@
 namespace CsvCombine\Import;
 
 use CsvCombine\Import\AppImport;
-use Exception;
 
 class FixedLengthImport extends AppImport
 {
@@ -34,7 +33,7 @@ class FixedLengthImport extends AppImport
      * importBody 固定長内容読み込みアクション
      *
      * @param string $data 固定長テキストデータ
-     * @param array $column_list 各カラム情報(name:カラム名,length:バイト数)
+     * @param array $baseColumnList 各カラム情報(name:カラム名,length:バイト数)
      * @param array $options 下記パラメータを必要に応じて設定
      * line_feed_code 改行コード(デフォルトは\r\n)
      * array_encoding 出力するする配列のエンコード(デフォルトはUTF-8

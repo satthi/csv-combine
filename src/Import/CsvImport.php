@@ -11,9 +11,7 @@ class CsvImport extends AppImport
      *
      * @param string $fileName 固定長テキストファイ
      * @param array $columnList 各カラム情報(name:カラム名,length:バイト数)
-     * @param string $delimiter 区切り文字(デフォルトは「,」)
-     * @param string $array_encoding 出力するする配列のエンコード(デフォルトはUTF-8
-     * @param string $import_encoding 入力するテキストのエンコード(デフォルトはSJIS-win
+     * @param array $options
      */
     public function import($fileName, $columnList = [], $options = [])
     {
