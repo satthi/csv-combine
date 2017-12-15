@@ -77,30 +77,54 @@ class FixedLengthExport extends AppExport {
         //$listにカンマか"がいた時の対応
         $returnText = '';
         foreach ($list as $row => $listVal) {
-            $columnOptions = $fixedOptions;
-            if (array_key_exists($row + 1, $extraFixedOptions)) {
-                $columnOptions = $extraFixedOptions[$row + 1];
-            } elseif (array_key_exists($row - $listCount, $extraFixedOptions)) {
-                $columnOptions = $extraFixedOptions[$row - $listCount];
-            }
+             $columnOptions = $this->getColumnOptions($fixedOptions, $row, $extraFixedOptions, $listCount);
 
             foreach ($columnOptions as $fixedOptionKey => $fixedInfo) {
-                if (!array_key_exists($fixedOptionKey, $listVal)) {
-                    //必要なデータが存在しないエラー
-                    throw new Exception('data not exist');
-                } else if (strlen($listVal[$fixedOptionKey]) > $fixedInfo['length']) {
-                    throw new Exception('length error');
-                }
-
-                if ($fixedInfo['type'] == 'text') {
-                    $returnText .= str_pad($listVal[$fixedOptionKey], $fixedInfo['length']);
-                } elseif ($fixedInfo['type'] == 'integer') {
-                    $returnText .= sprintf('%0' . $fixedInfo['length'] . 's', ($listVal[$fixedOptionKey]));
-                } else {
-                    throw new Exception('type error');
-                }
+                $returnText .= $this->valueSet($fixedOptionKey, $listVal, $fixedInfo);
             }
             $returnText .= $lineFeedCode;
+        }
+        return $returnText;
+    }
+
+    /**
+     * getColumnOptions
+     * カラムオプションの取得
+     * @author hagiwara
+     */
+    private function getColumnOptions($fixedOptions, $row, $extraFixedOptions, $listCount)
+    {
+        $columnOptions = $fixedOptions;
+        if (array_key_exists($row + 1, $extraFixedOptions)) {
+            $columnOptions = $extraFixedOptions[$row + 1];
+        } elseif (array_key_exists($row - $listCount, $extraFixedOptions)) {
+            $columnOptions = $extraFixedOptions[$row - $listCount];
+        }
+        return $columnOptions;
+    }
+
+    /**
+     * valueSet
+     * カラムごとの値のセット
+     * @author hagiwara
+     */
+    private function valueSet($fixedOptionKey, $listVal, $fixedInfo)
+    {
+        // 存在チェック
+        if (!array_key_exists($fixedOptionKey, $listVal)) {
+            //必要なデータが存在しないエラー
+            throw new Exception('data not exist');
+        } else if (strlen($listVal[$fixedOptionKey]) > $fixedInfo['length']) {
+            throw new Exception('length error');
+        }
+
+        // typeごとの値のセット
+        if ($fixedInfo['type'] == 'text') {
+            $returnText = str_pad($listVal[$fixedOptionKey], $fixedInfo['length']);
+        } elseif ($fixedInfo['type'] == 'integer') {
+            $returnText = sprintf('%0' . $fixedInfo['length'] . 's', ($listVal[$fixedOptionKey]));
+        } else {
+            throw new Exception('type error');
         }
         return $returnText;
     }
