@@ -89,8 +89,6 @@ class FixedLengthExport extends AppExport {
                     //必要なデータが存在しないエラー
                     throw new Exception('data not exist');
                 } else if (strlen($listVal[$fixedOptionKey]) > $fixedInfo['length']) {
-                    print_r(strlen($listVal[$fixedOptionKey]));
-                    print_r($fixedInfo['length']);
                     throw new Exception('length error');
                 }
 

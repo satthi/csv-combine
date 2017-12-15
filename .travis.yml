@@ -25,7 +25,7 @@ before_script:
   - cp phpunit.xml.dist phpunit.xml
 
 script:
-  - sh -c "if [ '$DEFAULT' = '1' ]; then phpunit --stderr; fi"
+  - sh -c "if [ '$DEFAULT' = '1' ]; then vendor/bin/phpunit --stderr; fi"
 
 notifications:
   email: false
