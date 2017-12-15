@@ -1,0 +1,38 @@
+{
+	"name": "satthi/csv-combine",
+	"description": "CsvCombine",
+	"type": "php-plugin",
+	"keywords": ["php", "csv"],
+	"homepage": "https://github.com/satthi/csv-combine",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Satoru Hagiwara",
+			"role": "Author"
+		}
+	],
+	"support": {
+		"source": "https://github.com/satthi/csv-combine"
+	},
+	"require": {
+	},
+	"require-dev": {
+		"cakephp/cakephp-codesniffer": "dev-master",
+		"phpunit/phpunit": "*"
+	},
+	"autoload": {
+		"psr-4": {
+			"CsvCombine\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"CsvCombine\\Test\\": "tests",
+			"CsvCombine\\Test\\App\\": "tests/test_app/App"
+		}
+	},
+	"suggest": {
+	},
+	"extra": {
+	}
+}
