@@ -15,7 +15,7 @@ class FixedLengthImportTest extends TestCase
      *
      * @return void
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->FixedLengthImport = new FixedLengthImport();
@@ -26,7 +26,7 @@ class FixedLengthImportTest extends TestCase
      *
      * @return void
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->FixedLengthImport);
 
