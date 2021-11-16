@@ -1,6 +1,6 @@
 # CsvCombine
 
-[![Build Status](https://travis-ci.org/satthi/csv-combine.svg?branch=master)](https://travis-ci.org/satthi/csv-combine)
+[![Build Status](https://app.travis-ci.com/satthi/csv-combine.svg?branch=master)](https://app.travis-ci.com/satthi/csv-combine)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/satthi/csv-combine/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/satthi/csv-combine/?branch=master)
 
 PHP versions  5/7
