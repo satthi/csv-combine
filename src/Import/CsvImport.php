@@ -27,6 +27,7 @@ class CsvImport extends AppImport
                 mb_convert_variables($arrayEncoding, $importEncoding, $data);
                 $csvData[] = $data;
             }
+            $data = array();
 
             $i = 0;
             foreach ($csvData as $line) {
