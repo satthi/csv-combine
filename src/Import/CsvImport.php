@@ -29,6 +29,7 @@ class CsvImport extends AppImport
             }
 
             $i = 0;
+            $returnInfo =[];
             foreach ($csvData as $line) {
                 $thisData = array();
                 if (empty($columnList)) {
@@ -58,14 +59,14 @@ class CsvImport extends AppImport
                     }
                 }
 
-                $data[$i] = $thisData;
+                $returnInfo[$i] = $thisData;
                 $i++;
             }
         } catch (Exception $e) {
             return false;
         }
 
-        return $data;
+        return $returnInfo;
     }
 
     /**
