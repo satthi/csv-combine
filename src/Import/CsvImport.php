@@ -90,7 +90,7 @@ class CsvImport extends AppImport
         $e = preg_quote($e);
         $_line = "";
         $eof = false; // Added for PHP Warning.
-        while ( $eof != true ) {
+        while (($eof != true) && (!feof($handle))) {
             $_line .= (empty($length) ? fgets($handle) : fgets($handle, $length));
             $itemcnt = preg_match_all('/'.$e.'/', $_line, $dummy);
             if ($itemcnt % 2 == 0) $eof = true;

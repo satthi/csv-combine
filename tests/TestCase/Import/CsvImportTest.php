@@ -80,6 +80,52 @@ class CsvImportTest extends TestCase
     }
 
     /**
+     * Test EOF
+     *
+     * @return void
+     */
+    public function test_loadCsvEof()
+    {
+        $test1_csv_path = dirname(dirname(dirname(__FILE__))) . '/test_app/test_eof.csv';
+        $column = [
+            'column1',
+            'column2',
+            'column3',
+        ];
+        $csvData = $this->CsvImport->import($test1_csv_path, $column);
+        //テストファイル
+        //1行目
+        $result1 = [
+            'column1' => '1',
+            'column2' => '2',
+            'column3' => '3'
+        ];
+        $this->assertTrue(
+            $csvData[0] === $result1
+        );
+
+        //2行目
+        $result2 = [
+            'column1' => 'あ',
+            'column2' => 'い',
+            'column3' => 'う'
+        ];
+        $this->assertTrue(
+            $csvData[1] === $result2
+        );
+
+        //3行目
+        $result3 = [
+            'column1' => 'ho"ge',
+            'column2' => "fuga",
+            'column3' => "hoge1\nhoge2"
+        ];
+        $this->assertTrue(
+            $csvData[2] === $result3
+        );
+    }
+
+    /**
      * Test initialize method
      *
      * @return void
