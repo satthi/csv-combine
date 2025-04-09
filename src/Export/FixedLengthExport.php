@@ -112,17 +112,24 @@ class FixedLengthExport extends AppExport {
     {
         // 存在チェック
         if (!array_key_exists($fixedOptionKey, $listVal)) {
-            //必要なデータが存在しないエラー
             throw new Exception('data not exist');
-        } else if (strlen($listVal[$fixedOptionKey]) > $fixedInfo['length']) {
+        }
+
+        $value = $listVal[$fixedOptionKey];
+
+        if (is_null($value)) {
+            $value = '';
+        }
+
+        if (strlen($value) > $fixedInfo['length']) {
             throw new Exception('length error');
         }
 
         // typeごとの値のセット
-        if ($fixedInfo['type'] == 'text') {
-            $returnText = str_pad($listVal[$fixedOptionKey], $fixedInfo['length']);
-        } elseif ($fixedInfo['type'] == 'integer') {
-            $returnText = sprintf('%0' . $fixedInfo['length'] . 's', ($listVal[$fixedOptionKey]));
+        if ($fixedInfo['type'] === 'text') {
+            $returnText = str_pad($value, $fixedInfo['length']);
+        } elseif ($fixedInfo['type'] === 'integer') {
+            $returnText = sprintf('%0' . $fixedInfo['length'] . 's', $value);
         } else {
             throw new Exception('type error');
         }
