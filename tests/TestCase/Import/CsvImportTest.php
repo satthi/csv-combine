@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CsvImportTest extends TestCase
 {
+    private $CsvImport;
 
     /**
      * setUp method

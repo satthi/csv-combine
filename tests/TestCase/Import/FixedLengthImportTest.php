@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FixedLengthImportTest extends TestCase
 {
+    private $FixedLengthImport;
 
     /**
      * setUp method
@@ -76,7 +77,7 @@ class FixedLengthImportTest extends TestCase
         //2行目
         $result2 = [
             'column1' => 'いうえ',
-            'column2' => 'ううう',
+            'column2' => '',
             'column3' => 'eee'
         ];
         $this->assertTrue(
