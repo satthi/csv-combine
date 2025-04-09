@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class FixedLengthExportTest extends TestCase
 {
+    private $FixedLengthExport;
     private $test1FixedLengthPath;
     private $test2FixedLengthPath;
 
@@ -59,7 +60,7 @@ class FixedLengthExportTest extends TestCase
             ],
             [
                 'いうえ',
-                'ううう',
+                null,
                 'eee',
             ],
             [

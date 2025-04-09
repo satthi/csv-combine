@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class CsvExportTest extends TestCase
 {
+    private $CsvExport;
     private $test1CsvPath;
     private $test2CsvPath;
     /**
